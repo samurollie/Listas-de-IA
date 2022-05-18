@@ -60,6 +60,6 @@ Pergunta: Q = sim ??
 Formule e implemente este problema em termos de estado inicial, estado final,  operadores e função de avaliação para Busca por melhora iterativas com Hill Climbing.  
 O operador considerado para gerar os filhos do estado corrente é permutar as  cidades da rota atual duas a duas, e verificar em seguida se o caminho está conectado (segundo a tabela abaixo, que representa o mapa da questão). A  cidade inicial deve ser mantida, uma vez que o caixeiro mora lá Jϑ A rota é fechada (ele volta à cidade de origem no final). 
 
-![table]()
+   ![table](https://github.com/samurollie/Listas-de-IA/blob/main/Lista%201/img/unnamed.png)
 
    Obs.: Cada uma das 5 questões, vale de 0 a 2 pontos.
