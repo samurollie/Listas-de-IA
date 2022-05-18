@@ -6,11 +6,13 @@
 
    O problema de missionários e canibais é normalmente enunciado como a seguir.  Três missionários e três canibais estão em um lado de um rio, juntamente com  um barco que pode levar uma ou duas pessoas. Descubra um meio de fazer  todos atravessarem o rio, sem deixar que um grupo de missionários de um lado  fique em número menor que o número de canibais nesse mesmo lado do rio.  Esse problema é famoso em IA porque foi assunto do primeiro artigo que  abordou a formulação de problemas a partir de um ponto de vista analítico  (Amarel, 1968). 
 
-    * Formule o problema precisamente, fazendo apenas as especificações  necessárias para assegurar uma solução válida. Faça um diagrama do espaço  de estados completo
+    * Formule o problema precisamente, fazendo apenas as especificações  necessárias para assegurar uma solução válida. Faça um diagrama do espaço  de estados completo  
     
-    **Formulação do Problema:**  
-      Estado Inicial: Os 3 missionários e os 3 canibais do lado esquerdo do rio
-      Estado Final: Os 3 missionários e os 3 canibais do lado direito do rio
+      **Formulação do Problema:**  
+         
+      **Estado Inicial:** Os 3 missionários e os 3 canibais do lado esquerdo do rio  
+      **Estado Final:** Os 3 missionários e os 3 canibais do lado direito do rio  
+      **Função sucessor:** Os sucessores de um estado são todos os estados aonde se chega após realizar a ação de mover uma ou duas pessoas (canibais ou missionários) e um barco de um lado para o outro do rio, sem que o número de missionários de um lado fique menor do que o número de canibais
 
     * Implemente e resolva o problema de forma ótima, utilizando um algoritmo de  busca apropriado. É uma boa ideia verificar a existência de estados repetidos? 
 
