@@ -5,16 +5,11 @@
 # Posição 4: Posição da canoa (0 = margem esquerda, 1 = margem direita)
 
 estadoInicial = [3,3,0,0,0]
-margemEsquerda = [3,3]
-margemDireita = [0,0]
-canoa = {
-    'd': 0,
-    'e': 1
-}
+estadoFinal = [0,0,3,3,1]
 operadores = [(1,0), (2,0), (1,1), (0,2), (0,1)]
 
-borda = []
-visitados = []
+fronteira = []
+historico = []
 
 def deslocarCanoa(estado, m = 0, c = 0):
     if m + c > 2:
@@ -54,42 +49,37 @@ def sucessores(estado):
             continue
         if (s[0] < s[1] and s[0] > 0) or (s[2] < s[3] and s[2] > 0):
             continue
-        if s in visitados:
+        if s in historico:
             continue
 
         sucessores.append(s)
     return sucessores
 
-def obtemAdjacenteNaoVisitado(elementoAnalisar):
-    l = sucessores(elementoAnalisar)
+def getNext(estado):
+    l = sucessores(estado)
     if len(l) > 0:
         return l[0]
     else:
         return -1
 
-def testeMeta(estado):
-    if estado[2] >= 3 and estado[3] >= 3:
-        return True
-    else:
-        return False
-
 def dfs(estadoInicial):
-    borda.append(estadoInicial)
-    while (len(borda) != 0):
-        elementoAnalisar = borda[len(borda) - 1]
-        if testeMeta(elementoAnalisar):
+    fronteira.append(estadoInicial)
+    while (len(fronteira) != 0):
+        estado = fronteira[len(fronteira) - 1]
+        if estado == estadoFinal:
+            print("Caminho encontrado. A busca obteve sucesso")
             break
         
-        v = obtemAdjacenteNaoVisitado(elementoAnalisar)
+        v = getNext(estado)
         if v == -1:
-            borda.pop()
+            fronteira.pop()
         else:
-            visitados.append(v)
-            borda.append(v)
+            historico.append(v)
+            fronteira.append(v)
 
     else:
         print("Caminho não encontrado. Busca sem sucesso")
-    return borda
+    return fronteira
 
 sol = dfs(estadoInicial)
 
@@ -102,4 +92,4 @@ for i in range(1, len(sol)):
     else:
         s = "<-"
     
-    print(sol[i - 1], "({},{},{})".format(md, cd, s))
+    print(sol[i - 1], "Movimento: ({} missionario, {} canibal, direção: {})".format(md, cd, s))
